@@ -2,17 +2,30 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
+	"os"
 	"runtime/debug"
 )
 
 func main() {
 	mux := http.NewServeMux()
+	mux.HandleFunc("/debug/", sourceCodeHandler)
 	mux.HandleFunc("/panic/", panicDemo)
 	mux.HandleFunc("/panic-after/", panicAfterDemo)
 	mux.HandleFunc("/", hello)
 	log.Fatal(http.ListenAndServe(":3000", devMw(mux)))
+}
+
+func sourceCodeHandler(w http.ResponseWriter, r *http.Request) {
+	path := r.FormValue("path")
+	file, err := os.Open(path)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	io.Copy(w, file)
 }
 
 func devMw(app http.Handler) http.HandlerFunc {
