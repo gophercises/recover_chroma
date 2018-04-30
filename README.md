@@ -27,7 +27,7 @@ For now just try to parse out the path to any source files, as well as the line 
 
 Using the code from your parsing, output links in your `devMw` handler's stack trace that link to the correct path where a source file can be viewed. For this step you may need to use something like [url.Values](https://golang.org/pkg/net/url/#Values) to encode the path to the source file.
 
-#### 5. Add line highlighting
+#### 4. Add line highlighting
 
 Chroma supports [line highlighting](https://github.com/alecthomas/chroma#the-html-formatter) and our stack trace has the line number where the panic occurred. Update your source code rendering handler to accept a `line` query parameter, and add that to your links created in step 4.
 
