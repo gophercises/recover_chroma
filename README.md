@@ -19,15 +19,13 @@ If you need help getting started, I would first focus on writing this handler in
 
 Once you have source files displayed in the browser, try using the [chroma](https://github.com/alecthomas/chroma) package to add syntax highlighting to your source code.
 
-#### 3. Parse the stack trace
+#### 3. Parse the stack trace & creating links
 
 With a source code handler in place you should now be ready to start parsing the stack trace in order to figure out which source files are mentioned in it.
 
-For now just try to parse out the path to any source files, as well as the line number in the file where the stack trace points to. Use a site like <https://regex-golang.appspot.com> and a sample stack trace to build your regular expressions and figure out what pieces of the match you might need for later steps.
+For now just try to parse out the path to any source files, as well as the line number in the file where the stack trace points to. In my code I use characters like a tab and the colon (`:`) to match my string, but you can choose whatever you think is best.
 
-#### 4. Create links to the source files in the stack trace
-
-Using the code from step 3, output links in your `devMw` handler's stack trace that link to the correct path where a source file can be viewed.
+Using the code from your parsing, output links in your `devMw` handler's stack trace that link to the correct path where a source file can be viewed. For this step you may need to use something like [url.Values](https://golang.org/pkg/net/url/#Values) to encode the path to the source file.
 
 #### 5. Add line highlighting
 
