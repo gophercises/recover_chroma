@@ -1,6 +1,6 @@
 # Exercise #15: Development Panic/Recover Middleware with Chroma
 
-[![exercise status: in progress](https://img.shields.io/badge/exercise%20status-in%20progress-yellow.svg?style=for-the-badge)](https://gophercises.com/exercises/recover_chroma)
+[![exercise status: released](https://img.shields.io/badge/exercise%20status-released-green.svg?style=for-the-badge)](https://gophercises.com/exercises/recover_chroma)
 
 
 ## Exercise details
